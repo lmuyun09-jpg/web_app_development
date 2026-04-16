@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card p-4 text-center border-warning border-2">
+            <h2 class="mb-4 text-warning text-dark fw-bold">⛩️ 誠心添香油錢</h2>
+            <p class="text-muted mb-4">
+                感謝神明的護佑與指引！您可以隨喜添點香油錢，護持系統營運。
+            </p>
+            
+            <form action="{{ url_for('donate.pay') }}" method="POST" class="mt-2">
+                <div class="row justify-content-center mb-4">
+                    <div class="col-md-8">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text bg-white">NT$</span>
+                            <input type="number" name="amount" id="amount" class="form-control text-center fs-4 fw-bold text-danger" value="100" min="1" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 預設金額按鈕組 -->
+                <div class="mb-4">
+                    <button type="button" class="btn btn-outline-secondary me-2" onclick="document.getElementById('amount').value=100">100</button>
+                    <button type="button" class="btn btn-outline-secondary me-2" onclick="document.getElementById('amount').value=300">300</button>
+                    <button type="button" class="btn btn-outline-secondary me-2" onclick="document.getElementById('amount').value=500">500</button>
+                    <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('amount').value=1000">1000</button>
+                </div>
+
+                <div class="d-grid gap-2 col-8 mx-auto">
+                    <button type="submit" class="btn btn-danger btn-lg">確認金流付款</button>
+                </div>
+            </form>
+            <small class="text-muted mt-3 d-block">* 本系統僅為模擬展示，按下按鈕後將自動標記為付款成功</small>
+        </div>
+    </div>
+</div>
+{% endblock %}

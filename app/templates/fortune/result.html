@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+        <div class="card p-5 border-warning border-3" style="background-color: #fffaf0;">
+            <div class="text-center mb-4">
+                <span class="badge bg-danger fs-5 px-3 py-2">神明賜籤</span>
+                <h1 class="display-5 fw-bold mt-3 text-dark">{{ fortune.title }}</h1>
+            </div>
+            
+            <div class="fortune-content text-center mb-5">
+                <!-- 取代換行為 br -->
+                <p class="fs-4 fst-italic" style="color: #5a3c27; line-height: 2;">
+                    {{ fortune.content | replace('\n', '<br>') | safe }}
+                </p>
+            </div>
+            
+            <hr class="border-warning border-2 opacity-50">
+            
+            <div class="fortune-description mt-4">
+                <h4 class="text-danger mb-3 fw-bold">📜 籤意解說</h4>
+                <p class="fs-5" style="line-height: 1.8;">
+                    {{ fortune.description | replace('\n', '<br>') | safe }}
+                </p>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="{{ url_for('fortune.index') }}" class="btn btn-outline-danger">返回重新求籤</a>
+                <a href="{{ url_for('donate.index') }}" class="btn btn-warning text-dark ms-2">添香油錢致謝</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

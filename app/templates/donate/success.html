@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5 text-center">
+        <div class="card p-5 border-success border-2">
+            <div class="mb-4">
+                <span style="font-size: 5rem;">🙏</span>
+            </div>
+            <h2 class="text-success fw-bold mb-3">感謝您的護持</h2>
+            <p class="fs-5 text-muted">神明保佑，願您平安順心。</p>
+            
+            <div class="bg-light p-3 rounded mt-4 text-start">
+                <p class="mb-1"><strong>交易編號：</strong> #{{ donation.id }}</p>
+                <p class="mb-1"><strong>捐款金額：</strong> NT$ {{ donation.amount }}</p>
+                <p class="mb-1"><strong>交易狀態：</strong> <span class="badge bg-success">成功</span></p>
+                <p class="mb-0"><strong>交易時間：</strong> {{ donation.created_at[:16] }}</p>
+            </div>
+            
+            <div class="mt-5">
+                <a href="{{ url_for('main.index') }}" class="btn btn-outline-primary px-4 me-2">回到首頁</a>
+                {% if session.get('user_id') %}
+                    <a href="{{ url_for('profile.index') }}" class="btn btn-warning text-dark px-4">查看紀錄</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

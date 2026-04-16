@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero mb-5">
+    <h1 class="display-4 fw-bold">指點迷津，線上靈籤</h1>
+    <p class="lead mt-3">心誠則靈。不論你在何處，只要虔誠祈求，神明必給予解答。</p>
+    <a href="{{ url_for('fortune.index') }}" class="btn btn-warning btn-lg mt-4 fw-bold text-dark rounded-pill px-5">開始求籤</a>
+</div>
+
+<div class="row text-center mt-5">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 p-4">
+            <h3 class="fs-1">📿</h3>
+            <h4 class="mt-3">線上求籤</h4>
+            <p class="text-muted">隨機靈驗籤詩，替您解答事業、感情與人生的種種困惑。</p>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 p-4">
+            <h3 class="fs-1">📖</h3>
+            <h4 class="mt-3">追蹤運勢</h4>
+            <p class="text-muted">註冊為會員，永續保存所有的算命紀錄，回顧神明的指引。</p>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 p-4">
+            <h3 class="fs-1">🧧</h3>
+            <h4 class="mt-3">線上添香油錢</h4>
+            <p class="text-muted">感謝神恩，一鍵透過線上捐獻系統添放香油錢表達心意。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

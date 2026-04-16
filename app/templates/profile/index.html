@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-12">
+        <h2 class="mb-4">📝 我的個人紀錄</h2>
+    </div>
+    
+    <div class="col-md-7 mb-4">
+        <div class="card p-4 shadow-sm h-100">
+            <h4 class="mb-4 text-danger">📜 歷史抽籤紀錄</h4>
+            {% if histories %}
+                <div class="list-group list-group-flush">
+                {% for history in histories %}
+                    <a href="{{ url_for('fortune.result', id=history.fortune_id) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
+                        <div>
+                            <span class="badge bg-warning text-dark me-2">{{ history.title }}</span>
+                            <small class="text-muted d-block mt-1">抽取時間：{{ history.created_at[:10] }}</small>
+                        </div>
+                        <span class="text-primary">觀看詳解 ➔</span>
+                    </a>
+                {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-muted mt-3">尚無任何算命紀錄。<a href="{{ url_for('fortune.index') }}">去抽第一支籤</a></p>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="col-md-5 mb-4">
+        <div class="card p-4 shadow-sm h-100">
+            <h4 class="mb-4 text-warning text-dark">🧧 香油錢捐款紀錄</h4>
+            {% if donations %}
+                <ul class="list-group list-group-flush">
+                {% for donation in donations %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                        <div>
+                            <span>捐款 NT$ {{ donation.amount }}</span><br>
+                            <small class="text-muted">{{ donation.created_at[:10] }}</small>
+                        </div>
+                        {% if donation.status == 'SUCCESS' %}
+                            <span class="badge bg-success rounded-pill px-3 py-2">付款成功</span>
+                        {% else %}
+                            <span class="badge bg-secondary rounded-pill px-3 py-2">{{ donation.status }}</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted mt-3">尚無捐款紀錄。<a href="{{ url_for('donate.index') }}">前去添香油錢</a></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
